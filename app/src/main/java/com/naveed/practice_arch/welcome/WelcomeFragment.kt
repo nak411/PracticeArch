@@ -41,7 +41,8 @@ class WelcomeFragment : Fragment() {
 
     private fun handleEvents(event: WelcomeEvent) {
         when (event) {
-            LaunchProfile -> findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToProfileFragment())
+            LaunchProfile -> findNavController()
+                .navigate(WelcomeFragmentDirections.actionWelcomeFragmentToProfileFragment())
         }
     }
 
