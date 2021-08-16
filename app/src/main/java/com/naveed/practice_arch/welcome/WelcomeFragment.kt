@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.naveed.practice_arch.databinding.FragmentWelcomeBinding
+import com.naveed.practice_arch.utils.EventObserver
 
 class WelcomeFragment : Fragment() {
 
@@ -18,7 +19,7 @@ class WelcomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.welcomeEvents.observe(this, { event ->
+        viewModel.welcomeEvents.observe(this, EventObserver { event ->
             handleEvents(event)
         })
     }

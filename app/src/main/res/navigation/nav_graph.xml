@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/welcome_fragment"
         android:name="com.naveed.practice_arch.welcome.WelcomeFragment"
-        android:label="fragment_welcome"
+        android:label="Welcome "
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcome_fragment_to_profileFragment"
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/profile_fragment"
         android:name="com.naveed.practice_arch.profile.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
