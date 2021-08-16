@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.mainToolbar)
         val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
         val navController = navHost?.findNavController()
         navController?.let {
