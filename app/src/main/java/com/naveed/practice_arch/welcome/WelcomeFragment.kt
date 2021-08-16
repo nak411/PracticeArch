@@ -10,6 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.naveed.practice_arch.databinding.FragmentWelcomeBinding
 import com.naveed.practice_arch.utils.EventObserver
 
+/**
+ * This fragment displays a screen which has no state.
+ * It contains a single events for launching different screens.
+ */
 class WelcomeFragment : Fragment() {
 
     private var _binding: FragmentWelcomeBinding? = null
