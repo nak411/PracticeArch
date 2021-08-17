@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.naveed.practice_arch.data.github.GithubRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
@@ -15,7 +16,8 @@ class ProfileViewModel(
     val state: LiveData<ProfileState> = _state
 
     fun loadUser(username: String) {
-        viewModelScope.launch {
+        _state.value = Loading
+        viewModelScope.launch(Dispatchers.IO) {
             val user = githubRepo.getUserByName(username)
             _state.postValue(
                 Data(
