@@ -1,12 +1,15 @@
 package com.naveed.practice_arch.profile
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.naveed.practice_arch.R
+import com.naveed.practice_arch.data.github.model.GithubUser
 import com.naveed.practice_arch.databinding.FragmentProfileBinding
 import com.naveed.practice_arch.di.DependencyGraph
 
@@ -31,12 +34,18 @@ class ProfileFragment : Fragment() {
     }
 
     private fun handleState(state: ProfileState) {
+        binding.pbProgress.isVisible = state is Loading
+        binding.tvUsername.isVisible = state is Data
         when(state) {
-            Loading -> binding.tvText.text = "Loading..."
-            Error -> binding.tvText.text = "Error"
-            is Data -> binding.tvText.text = state.user.toString()
+            is Data -> handleData(state.user)
+            else -> Log.d("TAG","State handled")
         }
     }
+
+    private fun handleData(user: GithubUser) {
+        binding.tvUsername.text = user.login
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
