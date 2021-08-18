@@ -2,7 +2,6 @@ package com.naveed.practice_arch.welcome
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.naveed.practice_arch.getOrAwaitValue
-import com.naveed.practice_arch.utils.Event
 import org.junit.Rule
 import org.junit.Test
 import kotlin.test.assertNotNull
@@ -19,7 +18,7 @@ class WelcomeViewModelTest {
         val viewModel = WelcomeViewModel()
 
         // Act
-        viewModel.action(ClickProfileButton)
+        viewModel.action(`ClickListItem(val position: Int)`)
         val value = viewModel.welcomeEvents.getOrAwaitValue()
         val content = value.getContentIfNotHandled()
 

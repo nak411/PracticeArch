@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.naveed.practice_arch.utils.Event
+import java.lang.IllegalArgumentException
 
 class WelcomeViewModel : ViewModel() {
 
@@ -21,7 +22,15 @@ class WelcomeViewModel : ViewModel() {
 
     fun action(action: WelcomeAction) {
         when (action) {
-            ClickProfileButton -> _welcomeEvents.value = Event(LaunchProfile)
+            is ClickListItem -> _welcomeEvents.value = getEventForIndex(action.position)
+        }
+    }
+
+    private fun getEventForIndex(position: Int): Event<WelcomeEvent> {
+        return when(position) {
+            0 -> Event(LaunchProfile)
+            1 -> Event(LaunchLegacyActivity)
+            else -> throw IllegalArgumentException("Invalid position")
         }
     }
 
@@ -34,6 +43,9 @@ class WelcomeViewModel : ViewModel() {
             listOf(
                 WelcomeListItem(
                     label = "Github Profile"
+                ),
+                WelcomeListItem(
+                    label = "Legacy Activity"
                 )
             )
         )

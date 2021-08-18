@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naveed.practice_arch.databinding.FragmentWelcomeBinding
+import com.naveed.practice_arch.legacy.LegacyActivity
 import com.naveed.practice_arch.utils.EventObserver
 import com.naveed.practice_arch.welcome.list.WelcomeRecyclerAdapter
 
@@ -61,12 +62,15 @@ class WelcomeFragment : Fragment() {
         when (event) {
             LaunchProfile -> findNavController()
                 .navigate(WelcomeFragmentDirections.actionWelcomeFragmentToProfileFragment())
+            LaunchLegacyActivity -> startActivity(LegacyActivity.getStartIntent(requireContext()))
         }
     }
 
     private fun setupAdapter(items: List<WelcomeListItem>) {
         binding.recyclerView.adapter =
-            WelcomeRecyclerAdapter(items) { viewModel.action(ClickProfileButton) }
+            WelcomeRecyclerAdapter(items) { position ->
+                viewModel.action(ClickListItem(position))
+            }
     }
 
     override fun onDestroyView() {
