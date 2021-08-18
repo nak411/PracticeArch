@@ -6,4 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".legacy.LegacyActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/l_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/AppbarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:title="Legacy Activity"/>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/l_toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:background="@color/black"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

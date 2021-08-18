@@ -11,6 +11,8 @@
         android:theme="@style/Theme.PracticeArch">
         <activity
             android:name=".legacy.LegacyActivity"
+            android:label="@string/legacy_activity"
+            android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity android:name=".MainActivity">
             <intent-filter>

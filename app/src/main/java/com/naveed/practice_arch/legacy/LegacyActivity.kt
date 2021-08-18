@@ -21,5 +21,13 @@ class LegacyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLegacyBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.lToolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+        }
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, LegacyFragment())
+            .commit()
     }
 }
